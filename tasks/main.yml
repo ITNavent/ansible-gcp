@@ -1,0 +1,7 @@
+---
+
+# DNS Configuration
+- include: dns.yml
+
+# Drives Configuration
+- include: disks.yml
