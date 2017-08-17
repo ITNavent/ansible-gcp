@@ -9,7 +9,6 @@
     ttl: "{{ item.ttl | default(300) }}"
     value: "{{ item.ip | default(gce_private_ip) }}"
     zone: "{{ item.domain | default('navent.biz')  }}"
-    wait: yes
     overwrite: yes
   with_items: "{{ dns }}"
   when: dns is defined and (dns | length > 0)
