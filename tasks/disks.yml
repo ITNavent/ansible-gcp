@@ -1,6 +1,7 @@
 ---
 
 - name: Format disk
+  become: yes
   filesystem:
     dev: "/dev/{{ item.dev }}"
     fstype: "{{ item.fstype }}"
@@ -8,6 +9,7 @@
   when: filesystems is defined and (filesystems | length > 0)
 
 - name: Mount disk
+  become: yes
   mount:
     boot: yes
     fstype: "{{ item.fstype }}"
