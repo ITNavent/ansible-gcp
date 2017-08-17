@@ -1,0 +1,16 @@
+---
+
+- name: Configure DNS
+  local_action:
+    module: route53
+    record: "{{ item.hostname | default(inventory_hostname) }}.{{ item.domain | default('navent.biz') }}"
+    command: create
+    type: "{{ item.type | default('A') }}"
+    ttl: "{{ item.ttl | default(300) }}"
+    value: "{{ item.ip | default(ansible_ssh_host) }}"
+    zone: "{{ item.domain | default('navent.biz')  }}"
+    wait: yes
+  with_items: "{{ dns }}"
+  when: dns is defined and (dns | length > 0)
+
+

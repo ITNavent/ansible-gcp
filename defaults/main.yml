@@ -1,0 +1,7 @@
+dns:
+  - hostname: "{{ inventory_hostname }}"
+    domain: "navent.biz"
+    ip: "{{ ansible_ssh_host }}"
+    ttl: 300
+    type: A
+

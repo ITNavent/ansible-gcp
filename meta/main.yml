@@ -1,0 +1,20 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: Guido Navalesi
+  description: Google Cloud Platform initializer.
+  company: "Navent"
+  license: "license (BSD, MIT)"
+  min_ansible_version: 1.8
+  platforms:
+  - name: Debian
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  galaxy_tags:
+    - google
+    - gcp
+    - cloud
