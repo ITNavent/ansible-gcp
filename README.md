@@ -46,3 +46,11 @@ filesystems:
     ...
     ...
 ```
+
+## Hostname
+
+El rol establece el hostname del equipo. Para configurarlo darle valor a las siguientes variables:
+```yaml
+hostname: "nombre-del-host"     # Valor por defecto {{ inventory_hostname }}
+domain: "dominio.com"           # Valor por defecto "navent.biz"
+```
