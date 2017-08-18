@@ -1,0 +1,5 @@
+---
+
+- name: "Change hostname to {{ hostname | default(inventory_hostname) }}.{{ domain | default('navent.biz') }}"
+  hostname:
+    name: "{{ hostname | default(inventory_hostname) }}.{{ domain | default('navent.biz') }}"

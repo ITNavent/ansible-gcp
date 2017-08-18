@@ -5,3 +5,6 @@
 
 # Drives Configuration
 - include: disks.yml
+
+# Hostname Configuration
+- include: hostname.yml
