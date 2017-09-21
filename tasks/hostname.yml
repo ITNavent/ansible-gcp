@@ -4,3 +4,9 @@
   become: yes
   hostname:
     name: "{{ hostname | default(inventory_hostname) }}.{{ domain | default('navent.biz') }}"
+
+- name: "Install dbus"
+  become: yes
+  apt:
+    name: dbus
+    state: present
