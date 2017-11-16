@@ -1,12 +1,31 @@
 ---
 
+- name: Create disks
+  block:
+    - set_fact:
+        disk_name: ""
+    - local_action:
+        module: gce_pd
+        detach_only: no
+        disk_type: "{{ instance_disks[item[1]].disk_type }}"
+        image: "{{ instance_disks[item[1]].image }}"
+        mode: "{{ instance_disks[item[1]].mode }}"
+        name: "{{ instance_disks[item[1]].name | default(item[0].name + '-persistent-' + item[1]) }}"
+        size_gb: "{{ instance_disks[item[1]].size_gb }}"
+        instance_name: "{{ item[0].name }}"
+  with_nested:
+    - "{{ gce_instance }}"
+    - "{{ range(1, (instance_disks | length) + 1) }}"
+  when: instance_disks | length > 0
+
 - name: Format disk
   become: yes
-  filesystem:
-    dev: "/dev/{{ item.dev }}"
-    fstype: "{{ item.fstype }}"
-  with_items: "{{ filesystems }}"
-  when: filesystems is defined and (filesystems | length > 0)
+#  filesystem:
+#    dev: "/dev/{{ item.dev }}"
+#    fstype: "{{ item.fstype }}"
+
+  with_items: "{{ instance_disks }}"
+  when: (filesystems is defined and (filesystems | length > 0)) or (instance_disks | length > 0)
 
 - name: Mount disk
   become: yes

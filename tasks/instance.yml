@@ -1,0 +1,47 @@
+---
+
+- name: Validate variables
+  assert:
+    that:
+      - "instance_num_instances == 0 or (instance_name | length > 0) "
+
+- name: Set SSH Key
+  set_fact:
+    full_instance_metadata: "{{ instance_metadata | combine({ 'ssh-keys': '{{ instance_ssh_key }}' }) }}"
+  when:
+
+- name: Create instance
+  local_action:
+    module: gce
+    name: "{{ instance_name }}"
+    num_instances: "{{ instance_num_instances }}"
+    state: present
+    machine_type: "{{ instance_machine_type }}"
+    tags: "{{ instance_tags }}"
+    zone: "{{ instance_zone }}"
+    preemptible: "{{ instance_preemptible }}"
+    metadata: "{{ full_instance_metadata }}"
+    network: "{{ instance_network }}"
+    subnetwork: "{{ instance_subnetwork }}"
+    external_ip: "{{ instance_external_ip }}"
+    ip_forward: "{{ instance_ip_forward }}"
+    image: "{{ instance_image }}"
+    disk_size: "{{ instance_disk_size }}"
+    disk_auto_delete: "{{ instance_disk_auto_delete }}"
+    persistent_boot_disk: "{{ instance_persistent_boot_disk }}"
+  register: gce_instance
+
+- name: Save host data
+  add_host:
+    hostname: "{{ item.public_ip }}"
+    groupname: "{{ instance_tags }}"
+  with_items: "{{ gce_instance.instance_data }}"
+
+- name: Wait for SSH for instances
+  wait_for:
+    delay: 1
+    host: "{{ item.private_ip }}"
+    port: 22
+    state: started
+    timeout: 300
+  with_items: "{{ gce_instance.instance_data }}"

@@ -1,3 +1,26 @@
+# Instance variables
+
+instance_name: ""
+instance_num_instances: 0
+instance_state: present
+instance_machine_type: n1-standard-1
+instance_tags: no-ip, zabbix-agent
+instance_zone: us-east1-c
+instance_preemptible: false
+instance_metadata: {}
+instance_ssh_key: "ubuntu:{{ lookup('file', lookup('env', 'SSH_PRIVATE_KEY')) }}"
+
+instance_network: default
+instance_subnetwork: ""
+instance_external_ip: none
+instance_ip_forward: false
+
+instance_image: ubuntu-1604-xenial
+instance_disk_size: 10
+instance_disk_auto_delete: true
+instance_persistent_boot_disk: false
+instance_disks: []
+
 dns:
   - hostname: "{{ inventory_hostname }}"
     domain: "navent.biz"
