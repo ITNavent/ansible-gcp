@@ -13,8 +13,8 @@
 
 - name: "Add entry to /etc/hosts"
   become: yes
-  replace:
+  lineinfile:
     path: /etc/hosts
-    regexp: '(\s*127.0.0.1\s*).*$'
-    replace: '\1{{ hostname | default(inventory_hostname) }}.{{ domain | default("navent.biz") }}'
+    insertbefore: BOF
+    line: "127.0.0.1 {{ hostname | default(inventory_hostname) }}.{{ domain | default('navent.biz') }}"
     backup: yes
