@@ -1,5 +1,11 @@
 ---
 
+- name: "Install dbus"
+  become: yes
+  apt:
+    name: dbus
+    state: present
+
 - name: "Change hostname to {{ hostname | default(inventory_hostname) }}.{{ domain | default('navent.biz') }}"
   become: yes
   hostname:
@@ -12,9 +18,3 @@
     insertbefore: BOF
     line: "127.0.0.1 {{ hostname | default(inventory_hostname) }}.{{ domain | default('navent.biz') }}"
     backup: yes
-
-- name: "Install dbus"
-  become: yes
-  apt:
-    name: dbus
-    state: present
