@@ -5,6 +5,9 @@ dns:
     ttl: 300
     type: A
 
+# Hostname
+hostname_enabled: yes
+
 # Google Fluent
 google_fluent_enabled: no
 google_fluent_path: "/etc/google-fluentd"
