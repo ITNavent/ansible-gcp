@@ -5,3 +5,18 @@ dns:
     ttl: 300
     type: A
 
+# Google Fluent
+google_fluent_enabled: no
+google_fluent_path: "/etc/google-fluentd"
+google_fluent_configs_path: "{{ google_fluent_path }}/config.d"
+google_fluent_active_configs_path: "{{ google_fluent_path }}/config-active.d"
+google_fluent_extra_configs_paths: []
+google_fluent_active_configs:
+  - syslog
+  - syslog_endpoint
+
+# Google Monitoring
+google_monitoring_enabled: no
+
+# Timezone
+timezone: US/Eastern

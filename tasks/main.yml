@@ -8,3 +8,11 @@
 
 # Hostname Configuration
 - include: hostname.yml
+
+# Logging
+- include: logging.yml
+  when: google_fluent_enabled
+
+# Timezone
+- include: timezone.yml
+  when: timezone is defined
