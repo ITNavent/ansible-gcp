@@ -10,10 +10,6 @@
 - include: hostname.yml
   when: hostname_enabled
 
-# Logging
-- include: logging.yml
-  when: google_fluent_enabled
-
 # Timezone
 - include: timezone.yml
   when: timezone is defined
