@@ -1,0 +1,6 @@
+---
+
+- name: Change timezone
+  become: yes
+  timezone:
+    name: "{{ timezone }}"
