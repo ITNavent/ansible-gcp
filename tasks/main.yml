@@ -1,5 +1,8 @@
 ---
 
+# Entropy Configuration
+- include: entropy.yml
+
 # DNS Configuration
 - include: dns.yml
 
