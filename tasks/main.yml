@@ -15,4 +15,4 @@
 
 # Timezone
 - include: timezone.yml
-  when: timezone is defined
+  when: timezone is defined and (timezone|length > 0​)
