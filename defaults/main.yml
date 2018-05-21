@@ -5,3 +5,9 @@ dns:
     ttl: 300
     type: A
 
+# Hostname
+hostname_enabled: yes
+
+# Timezone
+timezone: US/Eastern
+timezone_format: UTC

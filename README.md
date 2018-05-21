@@ -54,3 +54,11 @@ El rol establece el hostname del equipo. Para configurarlo darle valor a las sig
 hostname: "nombre-del-host"     # Valor por defecto {{ inventory_hostname }}
 domain: "dominio.com"           # Valor por defecto "navent.biz"
 ```
+
+## Timezone
+
+El rol establece el timezone del equipo. Para configurarlo darle valor a las siguientes variables:
+```yaml
+timezone: "US/Eastern"          # Valor por defecto "US/Eastern"
+timezone_format: "UTC"          # Valor por defecto "UTC"
+```

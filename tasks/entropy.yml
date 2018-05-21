@@ -1,0 +1,7 @@
+---
+
+- name: "Install haveged"
+  become: yes
+  apt:
+    name: haveged
+    state: present
