@@ -4,8 +4,3 @@
   become: yes
   timezone:
     name: "{{ timezone }}"
-
-- name: Change timezone format
-  become: yes
-  timezone:
-    name: "Etc/{{ timezone_format }}"

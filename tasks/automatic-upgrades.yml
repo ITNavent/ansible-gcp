@@ -1,0 +1,8 @@
+---
+
+- name: Disable automatic updates
+  become: yes
+  replace:
+    path: /etc/apt/apt.conf.d/10periodic
+    regexp: '^(.*)Update-Package-Lists(.*)$'
+    replace: 'APT::Periodic::Update-Package-Lists "0";'
