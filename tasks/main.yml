@@ -16,3 +16,6 @@
 # Timezone
 - include: timezone.yml
   when: timezone is defined and timezone != ""
+
+# Automatic Upgrades
+- include: automatic-upgrades.yml
