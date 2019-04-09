@@ -62,3 +62,7 @@ El rol establece el timezone del equipo. Para configurarlo darle valor a las sig
 timezone: "US/Eastern"          # Valor por defecto "US/Eastern"
 timezone_format: "UTC"          # Valor por defecto "UTC"
 ```
+
+## External projects
+
+Para tomar una imagen de otro proyecto externo hay que agregar al rol de ansible el parametro **external_projects**. Si no s e pone esto, no va a tomar la imagen por mas que tenga permisos en la imagen y va a fallar diciendo **Could not find image**. Mas info en https://docs.ansible.com/ansible/latest/modules/gce_module.html 
